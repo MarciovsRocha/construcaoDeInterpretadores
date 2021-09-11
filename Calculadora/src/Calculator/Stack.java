@@ -30,8 +30,8 @@ public class Stack {
         throw new Exception("Stack Underflow");
     }
 
-    public Element top(){
-        return this.myStack[this.top];
+    public int GetTop(){
+        return this.top;
     }
 
     public boolean Full(){
@@ -41,5 +41,18 @@ public class Stack {
     public boolean Empty(){
         return (-1 == this.top);
     }
+
+    public String TopType(){
+        String result = this.myStack[this.top].getClass().getSimpleName();
+        if (result.equals("Separador")){
+            Separador s = (Separador)this.myStack[this.top];
+            if ('(' == s.GetSeparador())
+                result+=".Open";
+            else if (')' == s.GetSeparador())
+                result+=".Close";
+        }
+        return result;
+    }
+
 
 }
